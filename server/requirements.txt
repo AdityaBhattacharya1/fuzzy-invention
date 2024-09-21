@@ -1,7 +1,7 @@
-Flask==2.2.3
-torch==2.0.1
-torchvision==0.15.2
-facenet-pytorch==2.5.2
-Pillow==9.5.0
-numpy==1.25.0
+Flask
+torch
+torchvision
+facenet-pytorch
+Pillow
+numpy
 pytorch-gradcam
