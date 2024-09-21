@@ -12,6 +12,7 @@ function App() {
 	const [uploadedImage, setUploadedImage] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [result, setResult] = useState(null)
+	const [serverUrl, setServerUrl] = useState('')
 	const [error, setError] = useState(null)
 	const router = useRouter()
 	ChartJS.register(ArcElement, Tooltip, Legend)
@@ -60,7 +61,7 @@ function App() {
 
 		try {
 			const response = await axios.post(
-				'http://127.0.0.1:5000/predict',
+				`${serverUrl}/predict`,
 				formData,
 				{
 					headers: { 'Content-Type': 'multipart/form-data' },
@@ -83,7 +84,15 @@ function App() {
 			<div className="flex justify-center items-center gap-10 flex-col pt-10">
 				<h1 className="text-4xl font-bold">Deepfake Detection</h1>
 
-				<div>
+				<div className="flex flex-col gap-10">
+					<input
+						type="text"
+						placeholder="Server URL"
+						className="input input-bordered w-full max-w-xs"
+						onChange={(e) => setServerUrl(e.target.value)}
+						value={serverUrl}
+					/>
+
 					<input
 						type="file"
 						className="file-input file-input-bordered w-full max-w-xs"
