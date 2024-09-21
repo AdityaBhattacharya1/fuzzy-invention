@@ -23,9 +23,8 @@ model = InceptionResnetV1(
     pretrained="vggface2", classify=True, num_classes=1, device=DEVICE
 )
 
-checkpoint = torch.hub.load(
-    repo_or_dir="https://huggingface.co/spaces/Saqib772/deepfake-detection/raw/main/resnetinceptionv1_epoch_32.pth",
-    map_location=torch.device("cpu"),
+checkpoint = torch.load(
+    "resnetinceptionv1_epoch_32.pth", map_location=torch.device("cpu")
 )
 model.load_state_dict(checkpoint["model_state_dict"])
 model.to(DEVICE)
